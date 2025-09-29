@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 export default function Signin() {
     let [username, setUsername] = useState(null)
     let [password, setPassword] = useState(null)
+    let [isDisabled, setIsDisabled] = useState(false)
     const navigate = useNavigate()
     
     return (
@@ -23,8 +24,9 @@ export default function Signin() {
                 <InputBox onChange={(e) => { setUsername(e.target.value) }} type="text" label={"Email"} placeholder={"ayu123@gmail.com"} />
                 <InputBox onChange={(e) => { setPassword(e.target.value) }} type="text" label={"Password"} placeholder={"asdf1234"} />
                 <div className="text-center">
-                    <Button label="Submit" onClick={async () => {
+                    <Button disabled={isDisabled} label="Submit" onClick={async () => {
                         try {
+                            setIsDisabled(true)
                             let response = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
                                 username, password
                             }, {
@@ -35,6 +37,8 @@ export default function Signin() {
                         } catch (err) {
                             console.log(err.message)
                             alert(err.response.data.message)
+                        } finally{
+                            setIsDisabled(false)
                         }
 
                     }} />

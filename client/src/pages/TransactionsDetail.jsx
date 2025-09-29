@@ -14,7 +14,7 @@ export default function TransactionsDetail() {
 
     let [transactions, setTransactions] = useState([])
     let [loading, setLoading] = useState(true)
-    
+
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_API_URL}/api/v1/account/${accountId}/transactions`, {
             withCredentials: true
@@ -40,11 +40,11 @@ export default function TransactionsDetail() {
                 transactions.length ?
                     transactions.map((txn, i) => {
                         return (
-                            <div key={i} className="bg-gray-500 m-4 p-3 rounded-md text-white text-sm font-bold" >
+                            <div key={i} className="bg-[#021270] m-4 p-3 rounded-md text-white text-xs font-bold" >
 
                                 <div className="flex justify-between">
                                     Amount:
-                                    <div>{txn.amount}</div>
+                                    <div className={txn.type === "credit" ? "text-green-500" : "text-red-500"}>{"Rs. " + txn.amount.toFixed(2)}</div>
                                 </div>
                                 <div className="flex justify-between">
                                     <div>Type:</div>
