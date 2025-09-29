@@ -18,7 +18,7 @@ async function handleRegistration(req,res){
 
     const account = await Account.create({
         userId: user._id,
-        balance: 1 + Math.random()*1000
+        balance: 1 + Math.round(Math.random() * 1000 * 100) / 100
     })
     
     res.status(201).json({
