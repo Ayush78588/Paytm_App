@@ -17,8 +17,8 @@ export default function Signin() {
         <div className="min-h-screen flex justify-center items-center bg-gray-300">
             <div className=" h-fit p-2 bg-white max-w-sm rounded-md">
                 <div className="text-center">
-                    <Heading title={"Signin"} />
-                    <Subheading subtitle={"Enter all information to signin"} />
+                    <Heading title={"Sign In"} />
+                    <Subheading subtitle={"Please enter your credentials to sign in"} />
                 </div>
                 <InputBox onChange={(e) => { setUsername(e.target.value) }} type="text" label={"Email"} placeholder={"ayu123@gmail.com"} />
                 <InputBox onChange={(e) => { setPassword(e.target.value) }} type="text" label={"Password"} placeholder={"asdf1234"} />
@@ -39,7 +39,7 @@ export default function Signin() {
 
                     }} />
                 </div>
-                <BottomWarning message={"New user?"} linkText={"Signup"} to={"/signup"} />
+                <BottomWarning message={"New user?"} linkText={"sign up"} to={"/signup"} />
             </div>
         </div>
 

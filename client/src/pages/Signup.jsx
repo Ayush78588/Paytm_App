@@ -21,7 +21,7 @@ export default function Signup() {
         <div className="flex min-h-screen w-screen justify-center items-center bg-gray-300 ">
             <div className="h-fit bg-white p-5 rounded-md max-w-sm">
                 <div className="text-center">
-                    <Heading title={"Signup"} />
+                    <Heading title={"Sign Up"} />
                     <Subheading subtitle={"Enter your information to create an account"} />
                 </div>
                 <InputBox onChange={(e)=>{setFirstName(e.target.value)}} type="text" label="First Name" placeholder={"John"} />
@@ -43,7 +43,7 @@ export default function Signup() {
                         
                     }} />
                 </div>
-                <BottomWarning message={"Already have an account?"} linkText={"Signin"} to={"/signin"}/>
+                <BottomWarning message={"Already have an account?"} linkText={"sign in"} to={"/signin"}/>
             </div>
         </div>
     )
