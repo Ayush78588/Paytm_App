@@ -33,45 +33,46 @@ export default function TransactionsDetail() {
             <Header label={<div>
                 <User props={{ username, firstName, lastName }} />
             </div>} />
-
-            {loading ?
-                <div className="p-3 font-bold">Loading...</div>
-                :
-                transactions.length ?
-                    transactions.map((txn, i) => {
-                        return (
-                            <div key={i} className="bg-[#021270] m-4 p-3 rounded-md text-white text-xs font-bold" >
-
-                                <div className="flex justify-between">
-                                    Amount:
-                                    <div className={txn.type === "credit" ? "text-green-500" : "text-red-500"}>{"Rs. " + txn.amount.toFixed(2)}</div>
-                                </div>
-                                <div className="flex justify-between">
-                                    <div>Type:</div>
-                                    {txn.type}
-                                </div>
-                                {txn.type === "debit" ?
-                                    <div className="flex justify-between">
-                                        to:
-                                        <div>{txn.counterAccountId.userId.username}</div>
-                                    </div>
-                                    :
-                                    <div className="flex justify-between">
-                                        from: <div>{txn.counterAccountId.userId.username}</div>
-                                    </div>
-                                }
-                                <div className="flex justify-between">
-                                    Date:
-                                    <div> {new Date(txn.date).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}</div>
-                                </div>
-
-                            </div>
-                        )
-                    })
+            <div className="flex flex-col items-center mt-3">
+                {loading ?
+                    <div >Loading...</div>
                     :
-                    <div className="p-3 text-red-700 font-bold">No transaction history!</div>
+                    transactions.length ?
+                        transactions.map((txn, i) => {
+                            return (
+                                <div key={i} className="bg-[#021270] m-2 p-3 rounded-md text-white text-sm font-bold w-full max-w-3xl" >
 
-            }
+                                    <div className="flex justify-between">
+                                        Amount:
+                                        <div className={txn.type === "credit" ? "text-green-500" : "text-red-500"}>{"Rs. " + txn.amount.toFixed(2)}</div>
+                                    </div>
+                                    <div className="flex justify-between">
+                                        <div>Type:</div>
+                                        {txn.type}
+                                    </div>
+                                    {txn.type === "debit" ?
+                                        <div className="flex justify-between">
+                                            to:
+                                            <div>{txn.counterAccountId.userId.username}</div>
+                                        </div>
+                                        :
+                                        <div className="flex justify-between">
+                                            from: <div>{txn.counterAccountId.userId.username}</div>
+                                        </div>
+                                    }
+                                    <div className="flex justify-between">
+                                        Date:
+                                        <div> {new Date(txn.date).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}</div>
+                                    </div>
+
+                                </div>
+                            )
+                        })
+                        :
+                        <div className="p-3 text-red-700 font-bold">No transaction history!</div>
+
+                }
+            </div>
 
         </div>
     )
