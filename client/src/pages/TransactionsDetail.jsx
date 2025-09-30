@@ -33,14 +33,14 @@ export default function TransactionsDetail() {
             <Header label={<div>
                 <User props={{ username, firstName, lastName }} />
             </div>} />
-            <div className="flex flex-col items-center mt-3">
+            <div className=" font-bold flex flex-col items-center m-3" >
                 {loading ?
                     <div >Loading...</div>
                     :
                     transactions.length ?
                         transactions.map((txn, i) => {
                             return (
-                                <div key={i} className="bg-[#021270] m-2 p-3 rounded-md text-white text-sm font-bold w-full max-w-3xl" >
+                                <div key={i} className="bg-[#021270] m-2 p-3 rounded-md text-white text-sm w-full max-w-3xl" >
 
                                     <div className="flex justify-between">
                                         Amount:
