@@ -4,7 +4,7 @@ export default function InputBox({label, placeholder, type, onChange}){
     return (
         <div className="flex flex-col gap-1 pb-3">
             <label htmlFor={id} className="w-2xl">{label}</label> 
-            <input onChange={onChange} id={id} type={type} placeholder={placeholder} required className=" border-gray-300 border-2 pl-2  outline-gray-400 rounded-sm"/> 
+            <input onChange={onChange} id={id} type={type} placeholder={placeholder} required className=" border-gray-300 border-2 p-0.5 text-xs  outline-gray-400 rounded-sm"/> 
         </div>
     )
 }

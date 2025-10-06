@@ -4,7 +4,6 @@ import { Navigate } from "react-router-dom"
 
 export default function PublicRoute({children}){
     const {isSignedIn} = useContext(UserContext)
-    console.log(isSignedIn,11);
     
     return(
         <>

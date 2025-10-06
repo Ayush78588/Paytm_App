@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useState } from "react"
 import axios from "axios"
 import User from "../components/User"
+import toast from "react-hot-toast"
 
 export default function TransactionsDetail() {
     const queryParams = new URLSearchParams(window.location.search)
@@ -25,7 +26,7 @@ export default function TransactionsDetail() {
             })
             .catch((err) => {
                 console.log(err.message)
-                alert(err.response.data.message)
+                toast.error(err.response.data.message)
             })
     }, [])
     return (

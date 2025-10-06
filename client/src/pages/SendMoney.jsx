@@ -6,6 +6,7 @@ import User from "../components/User";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
 import Header from "../components/Header";
+import toast from "react-hot-toast";
 
 export default function SendMoney() {
     const navigate = useNavigate()
@@ -40,11 +41,11 @@ export default function SendMoney() {
                             }, {
                                 withCredentials: true
                             })
-                            alert(response.data.message)
+                            toast.success(response.data.message)
                             navigate("/dashboard")
                         } catch (err) {
                             console.log(err)
-                            alert(err.response.data.message)
+                            toast.error(err.response.data.message)
                         } finally {
                             setIsDisabled(false)
                         }

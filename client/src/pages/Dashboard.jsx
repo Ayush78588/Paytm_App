@@ -5,6 +5,7 @@ import User from "../components/User"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
+import toast from "react-hot-toast"
 
 export default function Dashboard() {
     let [user, setUser] = useState(null)
@@ -19,7 +20,7 @@ export default function Dashboard() {
             })
             .catch((err) => {
                 console.log(err.message)
-                alert(err.response.data.message)
+                toast.error(err.response.data.message)
             })
     }, [])
     useEffect(() => {
@@ -29,7 +30,7 @@ export default function Dashboard() {
             })
             .catch((err) => {
                 console.log(err.message)
-                alert(err.response.data.message)
+                toast.error(err.response.data.message)
             })
     }, [])
     return (

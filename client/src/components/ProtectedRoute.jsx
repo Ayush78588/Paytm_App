@@ -4,7 +4,6 @@ import { Navigate } from "react-router-dom"
 
 export default function ProtectedRoute({ children }) {
     const { isSignedIn, loading } = useContext(UserContext)
-    console.log(isSignedIn, 1);
 
     return (
         <>
