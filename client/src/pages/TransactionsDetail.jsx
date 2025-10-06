@@ -38,7 +38,7 @@ export default function TransactionsDetail() {
                     <div >Loading...</div>
                     :
                     transactions.length ?
-                        transactions.map((txn, i) => {
+                        transactions.reverse().map((txn, i) => {
                             return (
                                 <div key={i} className="bg-[#021270] m-2 p-3 rounded-md text-white text-sm w-full max-w-3xl" >
 

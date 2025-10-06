@@ -4,6 +4,8 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import SendMoney from "./pages/SendMoney";
 import TransactionsDetail from "./pages/TransactionsDetail";
+import ProtectedRoute from "./components/ProtectedRoute";
+import PublicRoute from "./components/PublicRoute";
 
 function App() {
 
@@ -12,11 +14,11 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path={"/"} element={<Navigate to={"/signin"}/>}/>
-        <Route path={"/signup"} element={<Signup/>}/>
-        <Route path={"/signin"} element={<Signin/>}/>
-        <Route path={"/dashboard"} element={<Dashboard/>}/>
-        <Route path={"/send"} element={<SendMoney/>}/>
-        <Route path={"/transactions"} element={<TransactionsDetail/>}/>
+        <Route path={"/signup"} element={<PublicRoute><Signup/></PublicRoute>}/>
+        <Route path={"/signin"} element={<PublicRoute><Signin/></PublicRoute>}/>
+        <Route path={"/dashboard"} element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
+        <Route path={"/send"} element={<ProtectedRoute><SendMoney/></ProtectedRoute>}/>
+        <Route path={"/transactions"} element={<ProtectedRoute><TransactionsDetail/></ProtectedRoute>}/>
       
       </Routes>
     </BrowserRouter>

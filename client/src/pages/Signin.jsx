@@ -3,9 +3,10 @@ import InputBox from "../components/InputBox";
 import Subheading from "../components/Subheading";
 import Button from '../components/Button';
 import BottomWarning from "../components/BottomWarning";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {UserContext} from "../context/UserContext"
 
 
 export default function Signin() {
@@ -13,6 +14,7 @@ export default function Signin() {
     let [password, setPassword] = useState(null)
     let [isDisabled, setIsDisabled] = useState(false)
     const navigate = useNavigate()
+    const {setUser, setIsSignedIn} = useContext(UserContext)
     
     return (
         <div className="min-h-screen flex justify-center items-center bg-gray-300">
@@ -34,6 +36,9 @@ export default function Signin() {
                             })
                             alert(response.data.message)
                             navigate("/dashboard")
+                            setUser(response.data.user)
+                            setIsSignedIn(true)
+
                         } catch (err) {
                             console.log(err.message)
                             alert(err.response.data.message)

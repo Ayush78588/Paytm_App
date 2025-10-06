@@ -1,7 +1,10 @@
 import axios from "axios"
+import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
+import { UserContext } from "../context/UserContext"
 export default function Signout(){
     const navigate = useNavigate()
+    const {setUser, setIsSignedIn} = useContext(UserContext)
     return (
         <div>
             <button onClick={async()=>{
@@ -11,6 +14,8 @@ export default function Signout(){
                     })
                     alert(response.data.message)
                     navigate("/signin")
+                    setIsSignedIn(false)
+                    setUser(null)
 
                 }catch(err){
                     console.log(err.message)
