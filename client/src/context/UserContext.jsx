@@ -1,4 +1,6 @@
+import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 
 export const UserContext = createContext()
@@ -10,23 +12,24 @@ export function UserProvider({ children }) {
     let [user, setUser] = useState(null)
     let [loading, setLoading] = useState(true)
 
-    useEffect(()=>{
-        const storedUser = localStorage.getItem("user")
-        if(storedUser){
+    async function fetchUser() {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/user/me`, {
+                withCredentials: true
+            })
+            setUser(response.data.user)
             setIsSignedIn(true)
-            setUser(JSON.parse(storedUser))
+        } catch (err) {
+            console.log(err.message)
+        } finally {
+            setLoading(false)
         }
-        setLoading(false)
-    },[])
+    }
 
     useEffect(() => {
-        if (user){
-            localStorage.setItem("user", JSON.stringify(user))
-            
-        }
-        else
-            localStorage.removeItem("user")
-    }, [user])
+        fetchUser()
+    }, [])
+
 
     return (
         <UserContext.Provider value={{ user, setUser, isSignedIn, setIsSignedIn, loading }}>

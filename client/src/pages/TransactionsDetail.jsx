@@ -1,16 +1,20 @@
 import Header from "../components/Header"
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { useState } from "react"
 import axios from "axios"
 import User from "../components/User"
 import toast from "react-hot-toast"
+import { UserContext } from "../context/UserContext"
 
 export default function TransactionsDetail() {
     const queryParams = new URLSearchParams(window.location.search)
-    const username = queryParams.get("username")
+    // const username = queryParams.get("username")
     const accountId = queryParams.get("accountId")
-    const firstName = queryParams.get("firstName")
-    const lastName = queryParams.get("lastName")
+    // const firstName = queryParams.get("firstName")
+    // const lastName = queryParams.get("lastName")
+
+    const {user} = useContext(UserContext)
+    const {username, firstName, lastName} = user
 
 
     let [transactions, setTransactions] = useState([])

@@ -68,6 +68,9 @@ async function getTransactions(req, res) {
         if (!accountId) return res.status(400).json({ message: "Missing field" })
         if (!mongoose.Types.ObjectId.isValid(accountId)) return res.status(400).json({ message: "Invalid accountId" })
 
+        const account = await Account.findOne({userId: req.user._id})
+        if(accountId !== account._id.toString()) return res.status(400).json({message: "Account not found"})
+           
         const transactions = await Transaction.find({ accountId }).populate({
             path: "counterAccountId",
             populate: { path: "userId", select: "username" },

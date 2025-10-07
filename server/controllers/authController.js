@@ -48,6 +48,7 @@ async function handleLogin(req,res){
     message: "Signed in",
     user: {
         firstName: user.firstName,
+        lastName: user.lastName,
         username: user.username
     }
    })
